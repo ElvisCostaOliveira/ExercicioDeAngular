@@ -1,1 +1,34 @@
-<h1>{{ teste }}</h1>
+<!--binding de interpolação com o TS-->
+<h2>{{nome}}</h2>
+
+<!--binding de propriedade-->
+
+<img [src]="imagem"> 
+
+<!--binding de interpolacao-->
+<img src ={{imagem}}>
+
+<!--binding de evento-->
+<h2 (click) ="minhafuncao()"> clique aqui </h2>
+
+<!--binding de classe-->
+
+<h2 [ngClass] = "{'classe1': condicao1, 'classe2' : condicao2 }"> Esse é um texto</h2>
+
+<!--binding de via Dupla-->
+<input type="text" [(ngModel)] = "nomeDigitado" name ="nomeDigitado">
+<p>O nome digitado é : {{nomeDigitado}} </p>
+
+<div [ngSwitch]="nomeDigitado">
+    <p *ngSwitchCase=" 'Felipe' ">o nome digitado foi Felipe</p>
+    <p *ngSwitchDefault>o nome digitado não foi Felipe</p>
+</div>
+
+<ul *ngFor="let morador of listaDeMoradores">
+    <li>{{morador.name}}</li>
+</ul>
+
+<ul *ngFor="let sindico of listaDeSindicos">
+    <li>{{sindico}}</li>
+</ul>
+<router-outlet></router-outlet>

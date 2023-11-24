@@ -1,16 +1,29 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet,FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'test';
-  BemVindo = "Sejá Bem Vindo ";
-  teste = 'aa';
+  nome: String = "Felipe";
+  imagem = 'https://criticalhits.com.br/wp-content/uploads/2023/08/jujutsu-kaisen-divine-general-ma.jpg';
+minhafuncao() :void {
+  alert('clicou')
+}
+condicao1 = false;
+condicao2 = true;
+nomeDigitado = ''
+//lista de objetos
+listaDeMoradores = [
+  {name:'Carlos', numero: 10},
+  {name:'Elvis', numero: 20}
+]
+//lista de string
+listaDeSindicos: String[] = ['Felipe', 'Lucas']
 }
