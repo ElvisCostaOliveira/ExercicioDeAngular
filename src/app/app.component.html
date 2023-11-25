@@ -1,34 +1,37 @@
-<!--binding de interpolação com o TS-->
-<h2>{{nome}}</h2>
+<h1>Digite uma categoria:</h1>
+<p>Exemplos: acao, fantasia ou comedia</p>
+<input type="text" [(ngModel)]="categoriaEscolhida" name="categoriaEscolhida" placeholder="Digite aqui...">
 
-<!--binding de propriedade-->
+<div *ngIf="categoriaEscolhida">
+  <h3>Filmes da categoria "{{ categoriaEscolhida }}"</h3>
 
-<img [src]="imagem"> 
+  <div [ngSwitch]="categoriaEscolhida">
+    <div *ngSwitchCase="'acao'">
+      <div *ngFor="let filme of filmesAcao">
+        <h4>{{ filme.titulo }}</h4>
+        <p>{{ filme.descricao }}</p>
+        <img [src]="filme.imagem" alt="{{ filme.titulo }}">
+      </div>
+    </div>
 
-<!--binding de interpolacao-->
-<img src ={{imagem}}>
+    <div *ngSwitchCase="'comedia'">
+      <div *ngFor="let filme of filmesComedia">
+        <h4>{{ filme.titulo }}</h4>
+        <p>{{ filme.descricao }}</p>
+        <img [src]="filme.imagem" alt="{{ filme.titulo }}">
+      </div>
+    </div>
 
-<!--binding de evento-->
-<h2 (click) ="minhafuncao()"> clique aqui </h2>
+    <div *ngSwitchCase="'fantasia'">
+        <div *ngFor="let filme of filmesComedia">
+          <h4>{{ filme.titulo }}</h4>
+          <p>{{ filme.descricao }}</p>
+          <img [src]="filme.imagem" alt="{{ filme.titulo }}">
+        </div>
+      </div>
 
-<!--binding de classe-->
-
-<h2 [ngClass] = "{'classe1': condicao1, 'classe2' : condicao2 }"> Esse é um texto</h2>
-
-<!--binding de via Dupla-->
-<input type="text" [(ngModel)] = "nomeDigitado" name ="nomeDigitado">
-<p>O nome digitado é : {{nomeDigitado}} </p>
-
-<div [ngSwitch]="nomeDigitado">
-    <p *ngSwitchCase=" 'Felipe' ">o nome digitado foi Felipe</p>
-    <p *ngSwitchDefault>o nome digitado não foi Felipe</p>
+    <div *ngSwitchDefault>
+      <p>Desculpe, não há filmes disponíveis para a categoria "{{ categoriaEscolhida }}"</p>
+    </div>
+  </div>
 </div>
-
-<ul *ngFor="let morador of listaDeMoradores">
-    <li>{{morador.name}}</li>
-</ul>
-
-<ul *ngFor="let sindico of listaDeSindicos">
-    <li>{{sindico}}</li>
-</ul>
-<router-outlet></router-outlet>
