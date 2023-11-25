@@ -1,37 +1,42 @@
-<h1>Digite uma categoria:</h1>
-<p>Exemplos: acao, fantasia ou comedia</p>
-<input type="text" [(ngModel)]="categoriaEscolhida" name="categoriaEscolhida" placeholder="Digite aqui...">
+<body>
 
-<div *ngIf="categoriaEscolhida">
-  <h3>Filmes da categoria "{{ categoriaEscolhida }}"</h3>
 
-  <div [ngSwitch]="categoriaEscolhida">
-    <div *ngSwitchCase="'acao'">
-      <div *ngFor="let filme of filmesAcao">
-        <h4>{{ filme.titulo }}</h4>
-        <p>{{ filme.descricao }}</p>
-        <img [src]="filme.imagem" alt="{{ filme.titulo }}">
-      </div>
-    </div>
+    <h1>Digite uma categoria:</h1>
+    <p>Exemplos: acao, fantasia ou comedia</p>
+    <input type="text" [(ngModel)]="categoriaEscolhida" name="categoriaEscolhida" placeholder="Digite aqui...">
 
-    <div *ngSwitchCase="'comedia'">
-      <div *ngFor="let filme of filmesComedia">
-        <h4>{{ filme.titulo }}</h4>
-        <p>{{ filme.descricao }}</p>
-        <img [src]="filme.imagem" alt="{{ filme.titulo }}">
-      </div>
-    </div>
+    <div class="principal" *ngIf="categoriaEscolhida">
+        <h3>Filmes da categoria "{{ categoriaEscolhida }}"</h3>
 
-    <div *ngSwitchCase="'fantasia'">
-        <div *ngFor="let filme of filmesComedia">
-          <h4>{{ filme.titulo }}</h4>
-          <p>{{ filme.descricao }}</p>
-          <img [src]="filme.imagem" alt="{{ filme.titulo }}">
+        <div [ngSwitch]="categoriaEscolhida">
+            <div class="acao" *ngSwitchCase="'acao'">
+                <div *ngFor="let filme of filmesAcao">
+                    <h4>{{ filme.titulo }}</h4>
+                    <p>{{ filme.descricao }}</p>
+                    <img [src]="filme.imagem" alt="{{ filme.titulo }}">
+                </div>
+            </div>
+
+            <div *ngSwitchCase="'comedia'">
+                <div class="comedia" *ngFor="let filme of filmesComedia">
+                    <h4>{{ filme.titulo }}</h4>
+                    <p>{{ filme.descricao }}</p>
+                    <img [src]="filme.imagem" alt="{{ filme.titulo }}">
+                </div>
+            </div>
+
+            <div *ngSwitchCase="'fantasia'">
+                <div class="fantasia" *ngFor="let filme of filmesFantasia">
+                    <h4>{{ filme.titulo }}</h4>
+                    <p>{{ filme.descricao }}</p>
+                    <img [src]="filme.imagem" alt="{{ filme.titulo }}">
+                </div>
+            </div>
+
+            <div *ngSwitchDefault>
+                <p>Desculpe, não há filmes disponíveis para a categoria "{{ categoriaEscolhida }}"</p>
+            </div>
         </div>
-      </div>
-
-    <div *ngSwitchDefault>
-      <p>Desculpe, não há filmes disponíveis para a categoria "{{ categoriaEscolhida }}"</p>
     </div>
-  </div>
-</div>
+
+</body>
